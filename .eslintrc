@@ -2,7 +2,7 @@
   "extends": ["react-app", "eslint:recommended", "prettier"],
   "rules": {
     "no-var": "error",
-    "no-multiful-empty-lines": "error",
+    // "no-multiful-empty-lines": "error",
     "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "eqeqeq": "error",
     "dot-notation": "error",
