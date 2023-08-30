@@ -26,9 +26,9 @@ const IssueDetail: FC<Issue> = ({
           </StyledParagraph>
         </InfoBox>
         <CommentBox>
-            <StyledLink to='/'>Back To List</StyledLink>
-            <StyledParagraph className="md">코멘트: {comments}</StyledParagraph>
-            </CommentBox>
+          <StyledLink to="/">Back To List</StyledLink>
+          <StyledParagraph className="md">코멘트: {comments}</StyledParagraph>
+        </CommentBox>
       </TitleArea>
       <hr />
       <ContentsArea>
@@ -75,22 +75,22 @@ const CommentBox = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-    background-color: white;
-    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.64);
-    border-radius: 5px;
-    color: black;
-    width: 100px;
-    height: 30px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    line-height: 30px;
-    
-    &:hover{
-        filter: brightness(0.8);
-    }
-`
+  background-color: white;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.64);
+  border-radius: 5px;
+  color: black;
+  width: 100px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+`;
 
 const ContentsArea = styled.div`
   line-height: 30px;

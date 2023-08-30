@@ -6,8 +6,8 @@ const Header = () => {
     <HeaderContainer>
       <HeaderInner>
         <StyledLogoBox>
-          <Link to='/'>
-          <StyledParagraph className="lg">GitHub Issue Viewer</StyledParagraph>
+          <Link to="/">
+            <StyledParagraph className="lg">GitHub Issue Viewer</StyledParagraph>
           </Link>
         </StyledLogoBox>
         <StyledInfoBox>
