@@ -19,7 +19,6 @@ const IssueListSection: FC<Props> = ({ issueList }) => {
 export default IssueListSection;
 
 const IssueListSectionWrap = styled.section`
-  /* background-color: #390c74; // */
   border-radius: 15px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.64);
   overflow: hidden;

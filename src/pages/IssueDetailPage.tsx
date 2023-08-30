@@ -19,12 +19,10 @@ const IssueDetailPage = () => {
 export default IssueDetailPage;
 
 const IssueListContainer = styled.main`
-  /* background-color: yellow;// */
   color: white;
 `;
 
 const IssueListInner = styled.section`
-  /* background-color: #18062f; // */
   width: 1080px;
   min-height: 100vh;
   margin: 30px auto;

@@ -1,24 +1,25 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <HeaderContainer>
       <HeaderInner>
         <StyledLogoBox>
+          <Link to='/'>
           <StyledParagraph className="lg">GitHub Issue Viewer</StyledParagraph>
+          </Link>
         </StyledLogoBox>
         <StyledInfoBox>
           <div>
             <StyledParagraph className="sm">Organization</StyledParagraph>
             <StyledParagraph className="md">facebook</StyledParagraph>
           </div>
-          {/* 데이터로 변경 요망 */}
           <div>
             <StyledParagraph className="sm">Repository</StyledParagraph>
             <StyledParagraph className="md">react</StyledParagraph>
           </div>
         </StyledInfoBox>
-        {/* 데이터로 변경 요망 */}
       </HeaderInner>
     </HeaderContainer>
   );

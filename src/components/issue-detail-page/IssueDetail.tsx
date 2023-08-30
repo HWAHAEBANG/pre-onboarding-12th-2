@@ -4,6 +4,7 @@ import { Issue } from '../../types/issueType';
 import formatIsoDate from '../../utils/dateUtil';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Link } from 'react-router-dom';
 
 const IssueDetail: FC<Issue> = ({
   issue: { number, user, title, comments, created_at, body },
@@ -24,7 +25,10 @@ const IssueDetail: FC<Issue> = ({
             작성자 : {user.login}, 작성일 : {formatIsoDate(created_at)}
           </StyledParagraph>
         </InfoBox>
-        <CommentBox>코멘트: {comments}</CommentBox>
+        <CommentBox>
+            <StyledLink to='/'>Back To List</StyledLink>
+            <StyledParagraph className="md">코멘트: {comments}</StyledParagraph>
+            </CommentBox>
       </TitleArea>
       <hr />
       <ContentsArea>
@@ -64,9 +68,29 @@ const InfoBox = styled.div`
 
 const CommentBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 `;
+
+const StyledLink = styled(Link)`
+    background-color: white;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.64);
+    border-radius: 5px;
+    color: black;
+    width: 100px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    
+    &:hover{
+        filter: brightness(0.8);
+    }
+`
 
 const ContentsArea = styled.div`
   line-height: 30px;
@@ -94,8 +118,5 @@ const StyledParagraph = styled.p`
     line-height: 30px;
     font-weight: 600;
     color: white;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
   }
 `;

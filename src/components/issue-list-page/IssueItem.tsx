@@ -34,14 +34,14 @@ const IssueItem: FC<Issue> = ({
 export default IssueItem;
 
 const IssueItemWrap = styled.div`
-  background-color: rgba(24, 6, 47, 0.8); //
+  background-color: rgba(24, 6, 47, 0.8);
   display: flex;
   justify-content: space-between;
   padding: 5px 20px;
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(24, 6, 47, 0.4); //
+    background-color: rgba(24, 6, 47, 0.4);
   }
 `;
 
