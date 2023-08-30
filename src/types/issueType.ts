@@ -9,6 +9,6 @@ export interface Issue {
       avatar_url: string;
     };
     id: number;
-    body?: string;
+    body: string;
   };
 } // 타입 수정 요망
