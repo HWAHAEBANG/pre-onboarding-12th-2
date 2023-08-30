@@ -27,7 +27,9 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.main`
-  background: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
   background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
