@@ -6,7 +6,9 @@ export interface Issue {
     created_at: string;
     user: {
       login: string;
+      avatar_url: string;
     };
     id: number;
+    body?: string;
   };
 } // 타입 수정 요망
