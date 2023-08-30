@@ -28,11 +28,12 @@ export default Header;
 
 const HeaderContainer = styled.main`
   background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.5354735644257703) 0%,
-    rgba(0, 0, 0, 0.3870141806722689) 48%,
-    rgba(255, 255, 255, 1) 100%
+    rgba(0, 0, 0, 0.30017944677871145) 0%,
+    rgba(0, 0, 0, 0.15732230392156865) 48%,
+    rgba(255, 255, 255, 0) 100%
   );
   height: 50px;
 `;
