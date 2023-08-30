@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { styled } from 'styled-components';
 import IssueItem from './IssueItem';
+import Advertisement from './Advertisement';
 
 interface Props {
   issueList: any[]; //타입 수정 요망
@@ -10,7 +11,10 @@ const IssueListSection: FC<Props> = ({ issueList }) => {
   return (
     <IssueListSectionWrap>
       {issueList.map((issue, index) => (
-        <IssueItem issue={issue} key={index} />
+        <React.Fragment key={index}>
+          {index % 4 === 0 && index !== 0 && <Advertisement />}
+          <IssueItem issue={issue} />
+        </React.Fragment>
       ))}
     </IssueListSectionWrap>
   );
