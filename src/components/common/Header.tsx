@@ -51,7 +51,7 @@ const StyledLogoBox = styled.div`
   flex: 1;
 `;
 const StyledInfoBox = styled.div`
-  min-width: 300px;
+  min-width: 160px;
   display: flex;
   gap: 10px;
 `;
@@ -68,7 +68,7 @@ const StyledParagraph = styled.p`
   &.md {
     font-size: 15px;
     line-height: 18px;
-    min-width: 100px;
+    min-width: 80px;
     color: white;
   }
 
