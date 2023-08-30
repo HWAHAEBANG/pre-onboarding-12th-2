@@ -2,22 +2,30 @@ import { FC } from 'react';
 import { styled } from 'styled-components';
 import { Issue } from '../../types/issueType';
 import formatIsoDate from '../../utils/dateUtil';
+import { useNavigate } from 'react-router-dom';
 
-const IssueItem: FC<Issue> = ({ issue }) => {
-  console.log('도착', issue);
+const IssueItem: FC<Issue> = ({
+  issue,
+  issue: { id, number, title, user, created_at, comments },
+}) => {
+  const navigate = useNavigate();
+
+  const moveToDetail = () => {
+    navigate(`/detail/${id}`, { state: { issue } });
+  };
 
   return (
-    <IssueItemWrap>
+    <IssueItemWrap onClick={moveToDetail}>
       <InfoBox>
         <StyledParagraph className="lg">
-          #{issue.number} {issue.title}
+          #{number} {title}
         </StyledParagraph>
         <StyledParagraph className="sm">
-          작성자: {issue.user.login}, 작성일 {formatIsoDate(issue.created_at)}
+          작성자: {user.login}, 작성일 {formatIsoDate(created_at)}
         </StyledParagraph>
       </InfoBox>
       <CommentBox>
-        <StyledParagraph>코멘트: {issue.comments}</StyledParagraph>
+        <StyledParagraph>코멘트: {comments}</StyledParagraph>
       </CommentBox>
     </IssueItemWrap>
   );
