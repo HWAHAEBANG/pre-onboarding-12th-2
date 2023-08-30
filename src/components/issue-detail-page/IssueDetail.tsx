@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { Issue } from '../../types/issueType';
 import formatIsoDate from '../../utils/dateUtil';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const IssueDetail: FC<Issue> = ({
   issue: { number, user, title, comments, created_at, body },
@@ -27,7 +28,7 @@ const IssueDetail: FC<Issue> = ({
       </TitleArea>
       <hr />
       <ContentsArea>
-        <ReactMarkdown children={body} />
+        <ReactMarkdown children={body} remarkPlugins={[remarkGfm]} />
       </ContentsArea>
     </IssueDetailWrap>
   );
@@ -67,7 +68,9 @@ const CommentBox = styled.div`
   align-items: center;
 `;
 
-const ContentsArea = styled.div``;
+const ContentsArea = styled.div`
+  line-height: 30px;
+`;
 
 const StyledParagraph = styled.p`
   margin: 0;
