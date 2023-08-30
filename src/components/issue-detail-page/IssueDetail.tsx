@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { Issue } from '../../types/issueType';
 import formatIsoDate from '../../utils/dateUtil';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 const IssueDetail: FC<Issue> = ({
   issue: { number, user, title, comments, created_at, body },
@@ -25,7 +26,9 @@ const IssueDetail: FC<Issue> = ({
         <CommentBox>코멘트: {comments}</CommentBox>
       </TitleArea>
       <hr />
-      <ContentsArea>{body}</ContentsArea>
+      <ContentsArea>
+        <ReactMarkdown children={body} />
+      </ContentsArea>
     </IssueDetailWrap>
   );
 };
