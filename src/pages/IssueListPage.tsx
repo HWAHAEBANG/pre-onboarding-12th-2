@@ -4,11 +4,12 @@ import SortBar from '../components/issue-list-page/SortBar';
 import IssueListSection from '../components/issue-list-page/IssueListSection';
 import getIssue from '../apis/issue';
 import { Filter } from '../types/filterType';
+import { Issue } from '../types/issueType';
 
 const IssueListPage = () => {
   const states = ['all', 'open', 'closed']; // 성능
   const sorts = ['created', 'updated', 'comments'];
-  const [issueList, setIssueList] = useState<any>([]); // 타입 수정..
+  const [issueList, setIssueList] = useState<Issue[]>([]); // 타입 수정..
 
   const [searchFilter, setSearchFilter] = useState<Filter>({
     state: 'open',
@@ -35,7 +36,12 @@ const IssueListPage = () => {
           searchFilter={searchFilter}
           setSearchFilter={setSearchFilter}
         />
-        <IssueListSection issueList={issueList} />
+        <IssueListSection
+          issueList={issueList}
+          setIssueList={setIssueList}
+          searchFilter={searchFilter}
+          setSearchFilter={setSearchFilter}
+        />
       </IssueListInner>
     </IssueListContainer>
   );
