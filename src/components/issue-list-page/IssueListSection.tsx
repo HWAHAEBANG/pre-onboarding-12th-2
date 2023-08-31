@@ -1,4 +1,12 @@
-import React, { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { styled } from 'styled-components';
 import IssueItem from './IssueItem';
 import Advertisement from './Advertisement';
@@ -23,7 +31,9 @@ const IssueListSection: FC<Props> = ({
 
   const [loading, setLoading] = useState(false);
 
-  const getNewPage = async () => {
+  //==========
+
+  const getNewPage = useCallback(async () => {
     setLoading(true);
     try {
       const response = await getIssue(
@@ -39,9 +49,13 @@ const IssueListSection: FC<Props> = ({
       console.error('Error fetching data:', error);
     }
     setLoading(false);
-  };
-
-  //==========
+  }, [
+    searchFilter.state,
+    searchFilter.sort,
+    searchFilter.page,
+    setIssueList,
+    setSearchFilter,
+  ]);
 
   useEffect(() => {
     const options = {
