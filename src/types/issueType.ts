@@ -1,14 +1,12 @@
 export interface Issue {
-  issue: {
-    number: number;
-    title: string;
-    comments: number;
-    created_at: string;
-    user: {
-      login: string;
-      avatar_url: string;
-    };
-    id: number;
-    body: string;
+  number: number;
+  title: string;
+  comments: number;
+  created_at: string;
+  user: {
+    login: string;
+    avatar_url: string;
   };
-} // 타입 수정 요망
+  id: number;
+  body: string;
+}
