@@ -66,7 +66,7 @@ const IssueListSection: FC<Props> = ({
     return () => {
       observer.disconnect();
     };
-  }, [loading]);
+  }, [loading, getNewPage]);
 
   //=========-
   return (
