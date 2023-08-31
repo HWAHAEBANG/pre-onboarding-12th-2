@@ -1,10 +1,15 @@
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { Issue } from '../../types/issueType';
+// import { Issue } from '../../types/issueType';
 import formatIsoDate from '../../utils/dateUtil';
 import { useNavigate } from 'react-router-dom';
+import { Issue } from '../../types/issueType';
 
-const IssueItem: FC<Issue> = ({
+interface IssueItemProps {
+  issue: Issue; // 수정된 부분
+}
+
+const IssueItem: FC<IssueItemProps> = ({
   issue,
   issue: { id, number, title, user, created_at, comments },
 }) => {

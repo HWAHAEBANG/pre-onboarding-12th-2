@@ -1,11 +1,14 @@
 import { useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 import IssueDetail from '../components/issue-detail-page/IssueDetail';
+import { Issue } from '../types/issueType';
 
 const IssueDetailPage = () => {
+  const location = useLocation();
+
   const {
     state: { issue },
-  } = useLocation();
+  } = location as { state: { issue: Issue } };
 
   return (
     <IssueListContainer>

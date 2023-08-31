@@ -6,7 +6,11 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
 
-const IssueDetail: FC<Issue> = ({
+interface IssueDetailProps {
+  issue: Issue;
+}
+
+const IssueDetail: FC<IssueDetailProps> = ({
   issue: { number, user, title, comments, created_at, body },
 }) => {
   useEffect(() => {
