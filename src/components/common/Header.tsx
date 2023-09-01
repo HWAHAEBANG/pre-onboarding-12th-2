@@ -63,7 +63,7 @@ const StyledParagraph = styled.p`
 
   &.sm {
     font-size: 12px;
-    color: #dccff0;
+    color: #c1c5d4;
   }
 
   &.md {

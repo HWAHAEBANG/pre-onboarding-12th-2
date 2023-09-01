@@ -59,7 +59,7 @@ const StatesWrap = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: #18062f;
+  background-color: rgba(21, 22, 27, 0.8); //
   width: 150px;
   height: 50px;
   display: flex;
@@ -70,14 +70,14 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &.selected {
-    background-color: #411474;
+    background-color: #444868;
     border-bottom: none;
     color: white;
   }
 `;
 
 const StyledSelect = styled.select`
-  background-color: #18062f;
+  background-color: #444868;
   color: white;
   border: none;
   border-radius: 10px 10px 0 0;

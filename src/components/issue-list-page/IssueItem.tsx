@@ -39,14 +39,14 @@ const IssueItem: FC<IssueItemProps> = ({
 export default IssueItem;
 
 const IssueItemWrap = styled.div`
-  background-color: rgba(24, 6, 47, 0.8);
+  background-color: rgba(43, 45, 55, 0.8);
   display: flex;
   justify-content: space-between;
   padding: 5px 20px;
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(24, 6, 47, 0.4);
+    background-color: rgba(63, 70, 104, 0.8);
   }
 `;
 
@@ -66,7 +66,7 @@ const StyledParagraph = styled.p`
 
   &.sm {
     font-size: 12px;
-    color: #dccff0;
+    color: #c1c5d4;
   }
 
   &.md {
