@@ -36,13 +36,15 @@ const IssueListSection: FC<Props> = ({
 
 // 처음 받아오는 데이터
   useEffect(() => {
+    setLoading(true);
     getIssue(searchFilter.state, searchFilter.sort, 1)
       .then((response) => {
         setIssueList(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-      });
+      }).finally(()=>setLoading(false));
   }, [searchFilter.state, searchFilter.sort, setIssueList]);
 
 
@@ -55,6 +57,7 @@ const IssueListSection: FC<Props> = ({
       ).then((response)=>{
       setIssueList((prevData) => [...prevData, ...response.data])
       setSearchFilter((prevState) => ({ ...prevState, page: prevState.page + 1 }))
+      setLoading(false)
     }).catch((error)=>{
 console.error('Error fetching data:', error);
     }).finally(()=>{setLoading(false)})
@@ -76,7 +79,7 @@ console.error('Error fetching data:', error);
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting  && !loading ) {
           getNewPage();
         }
       });
