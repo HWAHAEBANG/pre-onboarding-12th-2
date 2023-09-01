@@ -13,6 +13,7 @@ import Advertisement from './Advertisement';
 import { Filter } from '../../types/filterType';
 import { Issue } from '../../types/issueType';
 import getIssue from '../../apis/issue';
+import SpinnerBubble from '../common/loading-effect/SpinnerBubble';
 
 interface Props {
   issueList: Issue[]; //타입 수정 요망
@@ -91,7 +92,8 @@ const IssueListSection: FC<Props> = ({
           <IssueItem issue={issue} />
         </React.Fragment>
       ))}
-      <LoadingBox ref={targetRef}>{loading && <p>Loading...</p>}</LoadingBox>
+      {loading && <SpinnerBubble/>}
+      <LoadingBox ref={targetRef}></LoadingBox>
     </IssueListSectionWrap>
   );
 };
