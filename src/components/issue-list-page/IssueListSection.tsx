@@ -34,22 +34,30 @@ const IssueListSection: FC<Props> = ({
 
   //==========
 
-  const getNewPage = useCallback(async () => {
+// 처음 받아오는 데이터
+  useEffect(() => {
+    getIssue(searchFilter.state, searchFilter.sort, 1)
+      .then((response) => {
+        setIssueList(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [searchFilter.state, searchFilter.sort, setIssueList]);
+
+
+  const getNewPage = useCallback(() => {
     setLoading(true);
-    try {
-      const response = await getIssue(
+    getIssue(
         searchFilter.state,
         searchFilter.sort,
         searchFilter.page,
-      );
-      const newData: Issue[] = response.data;
-
-      setIssueList((prevData) => [...prevData, ...newData]);
-      setSearchFilter((prevState) => ({ ...prevState, page: prevState.page + 1 }));
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-    setLoading(false);
+      ).then((response)=>{
+      setIssueList((prevData) => [...prevData, ...response.data])
+      setSearchFilter((prevState) => ({ ...prevState, page: prevState.page + 1 }))
+    }).catch((error)=>{
+console.error('Error fetching data:', error);
+    }).finally(()=>{setLoading(false)})
   }, [
     searchFilter.state,
     searchFilter.sort,
@@ -57,6 +65,7 @@ const IssueListSection: FC<Props> = ({
     setIssueList,
     setSearchFilter,
   ]);
+
 
   useEffect(() => {
     const options = {
@@ -67,7 +76,7 @@ const IssueListSection: FC<Props> = ({
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !loading) {
+        if (entry.isIntersecting) {
           getNewPage();
         }
       });
@@ -92,8 +101,7 @@ const IssueListSection: FC<Props> = ({
           <IssueItem issue={issue} />
         </React.Fragment>
       ))}
-      {loading && <SpinnerBubble/>}
-      <LoadingBox ref={targetRef}></LoadingBox>
+      <LoadingBox ref={targetRef}>{loading && <SpinnerBubble/>}</LoadingBox>
     </IssueListSectionWrap>
   );
 };
