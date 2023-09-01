@@ -1,4 +1,4 @@
-import styles from './spinner.module.css'
+import styles from './spinner.module.css';
 
 const SpinnerBubble = () => (
   <div className={styles.outerContainer}>
@@ -10,6 +10,6 @@ const SpinnerBubble = () => (
       <div />
     </div>
   </div>
-)
+);
 
-export default SpinnerBubble
+export default SpinnerBubble;

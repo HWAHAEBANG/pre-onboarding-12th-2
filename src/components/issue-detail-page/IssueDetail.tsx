@@ -28,7 +28,7 @@ const IssueDetail: FC<IssueDetailProps> = ({
             작성자 : {user.login}, 작성일 : {formatIsoDate(created_at)}
           </StyledParagraph>
         </InfoBox>
-          <StyledParagraph className="md">코멘트: {comments}</StyledParagraph>
+        <StyledParagraph className="md">코멘트: {comments}</StyledParagraph>
       </TitleArea>
       <hr />
       <ContentsArea>

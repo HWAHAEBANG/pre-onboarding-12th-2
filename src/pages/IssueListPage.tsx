@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { styled } from 'styled-components';
 import SortBar from '../components/issue-list-page/SortBar';
 import IssueListSection from '../components/issue-list-page/IssueListSection';
@@ -7,11 +7,7 @@ import { Filter } from '../types/filterType';
 import { Issue } from '../types/issueType';
 
 const IssueListPage = () => {
-  const states = ['all', 'open', 'closed']; // 성능
-  const sorts = ['created', 'updated', 'comments'];
-
   const [issueList, setIssueList] = useState<Issue[]>([]);
-
   const [searchFilter, setSearchFilter] = useState<Filter>({
     state: 'open',
     sort: 'comments',
@@ -21,12 +17,7 @@ const IssueListPage = () => {
   return (
     <IssueListContainer>
       <IssueListInner>
-        <SortBar
-          states={states}
-          sorts={sorts}
-          searchFilter={searchFilter}
-          setSearchFilter={setSearchFilter}
-        />
+        <SortBar searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
         <IssueListSection
           issueList={issueList}
           setIssueList={setIssueList}

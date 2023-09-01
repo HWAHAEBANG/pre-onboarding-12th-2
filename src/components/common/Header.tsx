@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { REPOSITORY } from '../../constants/repository';
 
 const Header = () => {
   return (
@@ -13,11 +14,11 @@ const Header = () => {
         <StyledInfoBox>
           <div>
             <StyledParagraph className="sm">Organization</StyledParagraph>
-            <StyledParagraph className="md">facebook</StyledParagraph>
+            <StyledParagraph className="md">{REPOSITORY.organization}</StyledParagraph>
           </div>
           <div>
             <StyledParagraph className="sm">Repository</StyledParagraph>
-            <StyledParagraph className="md">react</StyledParagraph>
+            <StyledParagraph className="md">{REPOSITORY.repository}</StyledParagraph>
           </div>
         </StyledInfoBox>
       </HeaderInner>

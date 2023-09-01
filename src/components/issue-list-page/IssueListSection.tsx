@@ -16,7 +16,7 @@ import getIssue from '../../apis/issue';
 import SpinnerBubble from '../common/loading-effect/SpinnerBubble';
 
 interface Props {
-  issueList: Issue[]; //타입 수정 요망
+  issueList: Issue[];
   setIssueList: Dispatch<SetStateAction<Issue[]>>;
   searchFilter: Filter;
   setSearchFilter: Dispatch<SetStateAction<Filter>>;
@@ -25,7 +25,7 @@ interface Props {
 const IssueListSection: FC<Props> = ({
   issueList,
   setIssueList,
-  searchFilter,
+  searchFilter: { state, sort, page },
   setSearchFilter,
 }) => {
   const targetRef = useRef(null);
@@ -34,41 +34,34 @@ const IssueListSection: FC<Props> = ({
 
   //==========
 
-// 처음 받아오는 데이터
   useEffect(() => {
     setLoading(true);
-    getIssue(searchFilter.state, searchFilter.sort, 1)
+    getIssue(state, sort, 1)
       .then((response) => {
         setIssueList(response.data);
         setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-      }).finally(()=>setLoading(false));
-  }, [searchFilter.state, searchFilter.sort, setIssueList]);
-
+      })
+      .finally(() => setLoading(false));
+  }, [state, sort, setIssueList]);
 
   const getNewPage = useCallback(() => {
     setLoading(true);
-    getIssue(
-        searchFilter.state,
-        searchFilter.sort,
-        searchFilter.page,
-      ).then((response)=>{
-      setIssueList((prevData) => [...prevData, ...response.data])
-      setSearchFilter((prevState) => ({ ...prevState, page: prevState.page + 1 }))
-      setLoading(false)
-    }).catch((error)=>{
-console.error('Error fetching data:', error);
-    }).finally(()=>{setLoading(false)})
-  }, [
-    searchFilter.state,
-    searchFilter.sort,
-    searchFilter.page,
-    setIssueList,
-    setSearchFilter,
-  ]);
-
+    getIssue(state, sort, page)
+      .then((response) => {
+        setIssueList((prevData) => [...prevData, ...response.data]);
+        setSearchFilter((prevState) => ({ ...prevState, page: prevState.page + 1 }));
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [state, sort, page, setIssueList, setSearchFilter]);
 
   useEffect(() => {
     const options = {
@@ -79,7 +72,7 @@ console.error('Error fetching data:', error);
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting  && !loading ) {
+        if (entry.isIntersecting && !loading) {
           getNewPage();
         }
       });
@@ -104,7 +97,7 @@ console.error('Error fetching data:', error);
           <IssueItem issue={issue} />
         </React.Fragment>
       ))}
-      <LoadingBox ref={targetRef}>{loading && <SpinnerBubble/>}</LoadingBox>
+      <LoadingBox ref={targetRef}>{loading && <SpinnerBubble />}</LoadingBox>
     </IssueListSectionWrap>
   );
 };

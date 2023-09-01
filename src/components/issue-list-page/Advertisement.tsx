@@ -1,9 +1,12 @@
 import { styled } from 'styled-components';
+import { ADVERTISEMENT } from '../../constants/advertisemant';
 
 const Advertisement = () => {
   return (
     <AdvertisemnetWrap>
-      <a href='https://www.wanted.co.kr/'><StyledImg src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100" /></a>
+      <a href={ADVERTISEMENT.url}>
+        <StyledImg src={ADVERTISEMENT.img} alt={ADVERTISEMENT.alt} />
+      </a>
     </AdvertisemnetWrap>
   );
 };

@@ -1,16 +1,15 @@
 import { FC, MouseEvent, Dispatch, SetStateAction, ChangeEvent } from 'react';
 import { styled } from 'styled-components';
+import { SORTS, STATES } from '../../constants/filter';
 
 type Filter = { state: string; sort: string; page: number };
 
 interface Props {
-  states: string[];
-  sorts: string[];
   searchFilter: Filter;
   setSearchFilter: Dispatch<SetStateAction<Filter>>;
 }
 
-const SortBar: FC<Props> = ({ states, sorts, searchFilter, setSearchFilter }) => {
+const SortBar: FC<Props> = ({ searchFilter, setSearchFilter }) => {
   const stateFilterClick = (e: MouseEvent<HTMLButtonElement>) => {
     const buttonElement = e.target as HTMLButtonElement;
     const buttonText = buttonElement.innerText;
@@ -25,7 +24,7 @@ const SortBar: FC<Props> = ({ states, sorts, searchFilter, setSearchFilter }) =>
   return (
     <SortBarWrap>
       <StatesWrap>
-        {states.map((state, index) => (
+        {STATES.map((state, index) => (
           <StyledButton
             className={state === searchFilter.state ? 'selected' : ''}
             key={index}
@@ -36,7 +35,7 @@ const SortBar: FC<Props> = ({ states, sorts, searchFilter, setSearchFilter }) =>
         ))}
       </StatesWrap>
       <StyledSelect id="dropdown" value={searchFilter.sort} onChange={sortFilterClick}>
-        {sorts.map((sort, index) => (
+        {SORTS.map((sort, index) => (
           <option key={index} value={sort}>
             {sort}
           </option>
@@ -59,7 +58,7 @@ const StatesWrap = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: rgba(21, 22, 27, 0.8); //
+  background-color: rgba(21, 22, 27, 0.8);
   width: 150px;
   height: 50px;
   display: flex;
