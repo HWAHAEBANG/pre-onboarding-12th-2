@@ -26,7 +26,7 @@ const IssueListContainer = styled.main`
 `;
 
 const IssueListInner = styled.section`
-  width: 1080px;
+  max-width: 1080px;
   min-height: 100vh;
   margin: 30px auto;
   border-radius: 15px;

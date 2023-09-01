@@ -41,7 +41,7 @@ const IssueDetail: FC<IssueDetailProps> = ({
 export default IssueDetail;
 
 const IssueDetailWrap = styled.section`
-  background-color: rgba(43, 45, 55, 0.8); //
+  background-color: #070c13;
   border-radius: 15px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.64);
   overflow: hidden;
@@ -58,6 +58,7 @@ const TitleArea = styled.div`
 const StyledImage = styled.img`
   width: 100px;
   height: 100px;
+  border-radius: 5px;
 `;
 
 const InfoBox = styled.div`
@@ -67,6 +68,10 @@ const InfoBox = styled.div`
 `;
 
 const ContentsArea = styled.div`
+  background-color: #0d1521;
+  margin-top: 20px;
+  padding: 20px 50px;
+  border-radius: 10px;
   line-height: 30px;
   max-width: 980px;
   overflow: hidden;
